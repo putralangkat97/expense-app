@@ -11,7 +11,14 @@
         </div>
 
         <div class="mb-3">
-            <x-button>Login</x-button>
+            <x-button wire:loading.class="opacity-50 cursor-not-allowed" wire:loading.attr="disabled">
+                <div wire:loading.remove>
+                    Login
+                </div>
+                <div wire:loading>
+                    Login...
+                </div>
+            </x-button>
         </div>
     </form>
 </div>

@@ -5,11 +5,15 @@
             <div wire:loading>
                 <x-small-spinners />
             </div>
-            <x-text-link href="{{ route('app.transaction.edit', $id) }}" value="Edit Transaction" class="text-sm" />
+            <x-text-link href="{{ route('app.transaction.index') }}" value="Back" class="text-sm" />
         </div>
     </div>
     <x-transaction-detail :data="$transaction" />
+    <div class="flex mt-3">
+        <x-button-link href="{{ route('app.transaction.edit', $id) }}" class="text-center">Edit</x-button-link>
+    </div>
     <div class="mt-3" wire:click="delete({{ $id }})">
-        <x-button-danger wire:loading.class="opacity-50 cursor-not-allowed" wire:loading.attr="disabled">Delete</x-button-danger>
+        <x-button-danger wire:loading.class="opacity-50 cursor-not-allowed"
+            wire:loading.attr="disabled">Delete</x-button-danger>
     </div>
 </div>

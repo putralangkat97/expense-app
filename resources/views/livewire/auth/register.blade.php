@@ -20,7 +20,14 @@
         </div>
 
         <div class="mb-3">
-            <x-button>Register</x-button>
+            <x-button wire:loading.class="opacity-50 cursor-not-allowed" wire:loading.attr="disabled">
+                <div wire:loading.remove>
+                    Register
+                </div>
+                <div wire:loading>
+                    Registering...
+                </div>
+            </x-button>
         </div>
     </form>
 </div>

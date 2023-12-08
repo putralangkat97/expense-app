@@ -2,8 +2,11 @@
     <div class="">
         <div class="flex justify-between items-center">
             <x-heading-1 value="Create Account" />
-            <div wire:loading>
-                <x-small-spinners />
+            <div class="flex items-center">
+                <div wire:loading>
+                    <x-small-spinners />
+                </div>
+                <x-text-link href="{{ route('app.account.index') }}" value="Back" class="text-sm ml-2" />
             </div>
         </div>
 

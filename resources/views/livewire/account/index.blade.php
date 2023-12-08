@@ -8,7 +8,7 @@
             <x-text-link href="{{ route('app.account.create') }}" value="Create account" class="text-sm ml-2" />
         </div>
     </div>
-    <div class="grid grid-cols-2 gap-4 mt-2">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
         @foreach ($this->accounts as $account)
             <x-account-list class="w-full" :data="$account" />
         @endforeach
