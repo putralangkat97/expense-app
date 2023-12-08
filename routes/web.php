@@ -2,15 +2,19 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('auth/login');
-})->name('login');
+Route::middleware(['api-web'])
+    ->group(function () {
+        Route::get('/', function () {
+            return view('auth/login');
+        })->name('login');
 
-Route::get('/register', function () {
-    return view('auth/register');
-})->name('register');
+        Route::get('/register', function () {
+            return view('auth/register');
+        })->name('register');
+    });
 
-Route::get('/logout', function () {
+
+Route::middleware(['api-guard'])->get('/logout', function () {
     session()->flush();
     return redirect()->route('login');
 })->name('logout');
