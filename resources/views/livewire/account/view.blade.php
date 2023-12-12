@@ -6,19 +6,11 @@
     </div>
 
     {{-- latest transaction --}}
-    {{-- <div class="mt-10">
+    <div class="mt-10 mb-24">
         <div class="flex justify-between items-center">
-            <x-heading-1 value="Latest Transaction" />
-            <x-text-link href="#" value="View all" class="text-sm" />
+            <x-heading-1 value="Recent Transaction" />
+            <x-text-link href="{{ route('app.transaction.index') }}" value="View all" class="text-sm" />
         </div>
-        <a href="#">
-            <x-transaction-card class="mt-2 mb-4" type="out" />
-        </a>
-        <a href="#">
-            <x-transaction-card class="mt-2 mb-4" type="in" />
-        </a>
-        <a href="#">
-            <x-transaction-card class="mt-2 mb-4" type="in" />
-        </a>
-    </div> --}}
+        <livewire:transaction.index lazy="on-load" :accountId="$account['id']" />
+    </div>
 </div>

@@ -9,12 +9,19 @@ use Throwable;
 
 class Index extends Component
 {
+    public $accountId;
+
     #[Computed]
     public function transactions()
     {
         try {
             $token_config = new APIHandler(session('user-logged-in'));
-            return $token_config->getData('/transaction');
+            if ($this->accountId) {
+                $data = $token_config->getData('/account/' . $this->accountId . '/transaction');
+                return $data['transactions'];
+            } else {
+                return $token_config->getData('/transaction');
+            }
         } catch (Throwable $th) {
             dd($th->getMessage());
         }

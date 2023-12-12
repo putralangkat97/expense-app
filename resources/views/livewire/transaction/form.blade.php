@@ -1,8 +1,11 @@
 <div>
     <div class="flex justify-between items-center">
         <x-heading-1 value="Create Transaction" />
-        <div wire:loading>
-            <x-small-spinners />
+        <div class="flex items-center">
+            <div wire:loading>
+                <x-small-spinners />
+            </div>
+            <x-text-link href="{{ route('app.transaction.index') }}" value="Back" class="text-sm ml-2" />
         </div>
     </div>
 

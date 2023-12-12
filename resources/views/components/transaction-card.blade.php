@@ -17,7 +17,9 @@ if ($type == 'in') {
     <div class="flex justify-between">
         <div class="">
             <h3 class="text-lg font-medium text-gray-800 dark:text-white">{{ $data['transaction_name'] }}</h3>
-            <p class="text-gray-500">{{ $data['account']['name'] }}</p>
+            @if (isset($data['account']))
+                <p class="text-gray-500">{{ $data['account']['name'] }}</p>
+            @endif
         </div>
         <div class="flex items-center gap-2">
             @if ($type == 'in')
