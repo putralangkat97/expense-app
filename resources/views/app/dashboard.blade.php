@@ -1,5 +1,14 @@
 <x-app-layout>
-    <livewire:dashboard lazy />
+    <livewire:dashboard lazy="on-load" />
+
+    {{-- latest transaction --}}
+    <div class="mt-10 mb-24">
+        <div class="flex justify-between items-center">
+            <x-heading-1 value="Recent Transaction" />
+            <x-text-link href="{{ route('app.transaction.index') }}" value="View all" class="text-sm" />
+        </div>
+        <livewire:transaction.index lazy="on-load" />
+    </div>
 
     {{-- create transaction --}}
     <div class="fixed bottom-0 w-full left-0 bg-gray-900 py-6 mx-auto">
