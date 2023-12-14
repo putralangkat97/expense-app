@@ -10,9 +10,9 @@
     </div>
     <x-transaction-detail :data="$transaction" />
     <div class="flex mt-3">
-        <x-button-link href="{{ route('app.transaction.edit', $id) }}" class="text-center">Edit</x-button-link>
+        <x-button-link href="{{ route('app.transaction.edit', $transaction['id']) }}" class="text-center">Edit</x-button-link>
     </div>
-    <div class="mt-3" wire:click="delete({{ $id }})">
+    <div class="mt-3" wire:click="delete({{ $transaction['id'] }})">
         <x-button-danger wire:loading.class="opacity-50 cursor-not-allowed"
             wire:loading.attr="disabled">Delete</x-button-danger>
     </div>

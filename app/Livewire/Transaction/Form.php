@@ -3,12 +3,13 @@
 namespace App\Livewire\Transaction;
 
 use App\Helpers\APIHandler;
-use Livewire\Attributes\Computed;
 use Livewire\Component;
 use Throwable;
 
 class Form extends Component
 {
+    public $transaction;
+    public $accounts;
     public $id;
     public $transaction_name;
     public $account_id;
@@ -19,31 +20,14 @@ class Form extends Component
 
     public function mount()
     {
-        if ($this->id) {
-            $api_config = new APIHandler(session('user-logged-in'));
-            try {
-                $response = $api_config->getData("/transaction/" . $this->id);
-                $this->id = $response['id'];
-                $this->transaction_name = $response['transaction_name'];
-                $this->account_id = $response['account']['id'];
-                $this->amount = $response['amount'];
-                $this->date = $response['date'];
-                $this->remarks = $response['remarks'];
-                $this->type = $response['type'] == "in" ? 1 : 0;
-            } catch (Throwable $th) {
-                dd($th->getMessage());
-            }
-        }
-    }
-
-    #[Computed]
-    public function accounts()
-    {
-        try {
-            $token_config = new APIHandler(session('user-logged-in'));
-            return $token_config->getData('/account');
-        } catch (Throwable $th) {
-            dd($th->getMessage());
+        if ($this->transaction) {
+            $this->id = $this->transaction['id'];
+            $this->transaction_name = $this->transaction['transaction_name'];
+            $this->account_id = $this->transaction['account']['id'];
+            $this->amount = $this->transaction['amount'];
+            $this->date = $this->transaction['date'];
+            $this->remarks = $this->transaction['remarks'];
+            $this->type = $this->transaction['type'] == "in" ? 1 : 0;
         }
     }
 
@@ -64,12 +48,12 @@ class Form extends Component
                 $url = "";
                 $api_config = new APIHandler(session('user-logged-in'));
                 if ($this->id) {
-                    $url = '/transaction/' . $this->id;
+                    $url = "/transaction/{$this->id}";
                 } else {
-                    $url = '/transaction';
+                    $url = "/transaction";
                 }
-                $api_config->storeData($url, $validated);
-                return $this->redirectRoute('app.dashboard', navigate: true);
+                $data = $api_config->storeData($url, $validated);
+                return $this->redirectRoute('app.transaction.show', ['id' => $data['id']], navigate: true);
             } catch (Throwable $th) {
                 dd($th->getMessage());
             }

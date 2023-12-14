@@ -1,3 +1,3 @@
 <x-app-layout>
-    <livewire:transaction.form :id="$id" lazy="on-load" />
+    <livewire:transaction.form :transaction="$transaction" :accounts="$accounts" lazy />
 </x-app-layout>

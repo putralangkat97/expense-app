@@ -9,7 +9,7 @@
         </div>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
-        @foreach ($this->accounts as $account)
+        @foreach ($accounts as $account)
             <x-account-list class="w-full" :data="$account" />
         @endforeach
     </div>

@@ -1,11 +1,10 @@
 @props([
-    'type' => '',
     'data' => null,
 ])
 
 <div class="mt-2 bg-gray-100 dark:bg-gray-800 w-full h-20 rounded-md flex mx-auto items-center justify-center">
-    <span class="{{ $type == 'in' ? 'text-green-500 dark:text-green' : 'text-red-500 dark:text-red-400' }} text-2xl">
-        {{ $type == 'in' ? '+' : '-' }} {{ \Illuminate\Support\Number::currency($data['amount'], in: 'IDR') }}
+    <span class="{{ $data['type'] == 'in' ? 'text-green-500 dark:text-green' : 'text-red-500 dark:text-red-400' }} text-2xl">
+        {{ $data['type'] == 'in' ? '+' : '-' }} {{ \Illuminate\Support\Number::currency($data['amount'], in: 'IDR') }}
     </span>
 </div>
 <div class="bg-gray-100 dark:bg-gray-800 p-4 mt-2 rounded-md">

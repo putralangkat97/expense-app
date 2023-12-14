@@ -8,20 +8,7 @@ use Throwable;
 
 class View extends Component
 {
-    public $id;
     public $transaction;
-
-    public function mount()
-    {
-        if ($this->id) {
-            try {
-                $token_config = new APIHandler(session('user-logged-in'));
-                $this->transaction = $token_config->getData('/transaction/' . $this->id);
-            } catch (Throwable $th) {
-                dd($th->getMessage());
-            }
-        }
-    }
 
     public function delete($id)
     {

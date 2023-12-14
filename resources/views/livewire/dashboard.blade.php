@@ -7,7 +7,7 @@
                 <span class="text-gray-800 text-7xl">+</span>
             </div>
         </a>
-        @foreach ($this->accounts as $account)
+        @foreach ($accounts as $account)
             <a href="{{ route('app.account.show', $account['id']) }}" wire:navigate.hover>
                 <x-account-card class="w-96" :data="$account" />
             </a>

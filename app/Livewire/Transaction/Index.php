@@ -2,28 +2,17 @@
 
 namespace App\Livewire\Transaction;
 
-use App\Helpers\APIHandler;
-use Livewire\Attributes\Computed;
 use Livewire\Component;
-use Throwable;
 
 class Index extends Component
 {
     public $accountId;
+    public $transactions;
 
-    #[Computed]
-    public function transactions()
+    public function mount()
     {
-        try {
-            $token_config = new APIHandler(session('user-logged-in'));
-            if ($this->accountId) {
-                $data = $token_config->getData('/account/' . $this->accountId . '/transaction');
-                return $data['transactions'];
-            } else {
-                return $token_config->getData('/transaction');
-            }
-        } catch (Throwable $th) {
-            dd($th->getMessage());
+        if ($this->accountId) {
+            $this->transactions = $this->transactions['transactions'];
         }
     }
 

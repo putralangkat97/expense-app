@@ -8,11 +8,9 @@ use Throwable;
 
 class APIHandler
 {
-    public function __construct(
-        public array $data,
-    )
+    public function sessionData()
     {
-        $this->data = $data;
+        return session('user-logged-in');
     }
 
     public function getUrl(string $prefix): string
@@ -22,12 +20,12 @@ class APIHandler
 
     public function getToken(): string
     {
-        return $this->data['token'];
+        return $this->sessionData()['token'];
     }
 
     public function getUserId(): string|int
     {
-        $user = $this->data['user'];
+        $user = $this->sessionData()['user'];
         return $user['id'];
     }
 
