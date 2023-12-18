@@ -4,12 +4,12 @@
         <a href="{{ route('app.account.create') }}" wire:navigate.hover>
             <div
                 class="h-[176px] w-40 rounded-md bg-transparent border-2 border-gray-800 flex mx-auto justify-center items-center">
-                <span class="text-gray-800 text-7xl">+</span>
+                <span class="text-gray-800 text-7xl -mt-2">+</span>
             </div>
         </a>
         @foreach ($accounts as $account)
             <a href="{{ route('app.account.show', $account['id']) }}" wire:navigate.hover>
-                <x-account-card class="w-96" :data="$account" />
+                <x-account-card class="w-96" :data="$account" :dashboard="true" />
             </a>
         @endforeach
     </div>

@@ -2,7 +2,7 @@
     <livewire:dashboard lazy :accounts="$accounts" />
 
     {{-- latest transaction --}}
-    <div class="mt-10 mb-24">
+    <div class="mt-10">
         <div class="flex justify-between items-center">
             <x-heading-1 value="Recent Transaction" />
             <x-text-link href="{{ route('app.transaction.index') }}" value="View all" class="text-sm" />

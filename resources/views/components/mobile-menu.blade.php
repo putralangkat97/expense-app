@@ -29,12 +29,12 @@
     <div class="absolute transition-[opacity,margin] duration-[0.1ms] w-32 z-10 mt-2 top-8 end-0 bg-white dark:bg-gray-800 shadow-lg p-2 rounded-md"
         x-show="activeMenu" @click.outside="activeMenu = false" x-transition:leave.duration.200ms
         x-transition:enter.duration.200ms>
-        <x-nav-link href="{{ route('app.dashboard') }}" value="Dashboard"
-            active="{{ request()->routeIs('app.dashboard') }}" />
-        <x-nav-link href="{{ route('app.account.index') }}" value="Account"
-            active="{{ request()->routeIs('app.account*') }}" />
-        <x-nav-link href="{{ route('app.transaction.index') }}" value="Transaction"
-            active="{{ request()->routeIs('app.transaction*') }}" />
+        {{-- <x-nav-link href="{{ route('app.dashboard') }}" value="Dashboard"
+            active="{{ request()->routeIs('app.dashboard') }}" /> --}}
+        {{-- <x-nav-link href="{{ route('app.account.index') }}" value="Account"
+            active="{{ request()->routeIs('app.account*') }}" /> --}}
+        {{-- <x-nav-link href="{{ route('app.transaction.index') }}" value="Transaction"
+            active="{{ request()->routeIs('app.transaction*') }}" /> --}}
         <a class="flex items-center gap-x-3.5 py-2 px-3 text-sm text-gray-800 dark:text-gray-200 dark:hover:text-white"
             href="{{ route('logout') }}">
             Logout

@@ -3,6 +3,7 @@
 namespace App\Livewire\Transaction;
 
 use App\Helpers\APIHandler;
+use Livewire\Attributes\Url;
 use Livewire\Component;
 use Throwable;
 
@@ -17,6 +18,9 @@ class Form extends Component
     public $date;
     public $type;
     public $remarks;
+
+    #[Url]
+    public $view = false;
 
     public function mount()
     {

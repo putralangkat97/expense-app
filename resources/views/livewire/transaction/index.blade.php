@@ -1,4 +1,4 @@
-<div class="">
+<div class="mb-24">
     @forelse ($transactions as $transaction)
         <a href="{{ route('app.transaction.show', $transaction['id']) }}" wire:navigate.hover>
             <x-transaction-card class="mt-2 mb-4" :type="$transaction['type']" :data="$transaction" />

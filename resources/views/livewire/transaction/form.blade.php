@@ -1,11 +1,15 @@
 <div>
     <div class="flex justify-between items-center">
-        <x-heading-1 value="Create Transaction" />
+        <x-heading-1 value="{{ $id ? 'Edit' : 'Create' }} Transaction" />
         <div class="flex items-center">
             <div wire:loading>
                 <x-small-spinners />
             </div>
-            <x-text-link href="{{ route('app.transaction.index') }}" value="Back" class="text-sm ml-2" />
+            @if ($id)
+                <x-text-link href="{{ route('app.transaction.show', $id) }}" value="Back" class="text-sm ml-2" />
+            @else
+                <x-text-link href="{{ route('app.dashboard') }}" value="Back" class="text-sm ml-2" />
+            @endif
         </div>
     </div>
 
@@ -19,7 +23,8 @@
                 <x-select-input wire:model="account_id" id="account_id" class="w-full">
                     <option value="">Source account</option>
                     @foreach ($this->accounts as $account)
-                        <option value="{{ $account['id'] }}" @if ($account['id'] == $account_id) selected @endif>{{ $account['name'] }}</option>
+                        <option value="{{ $account['id'] }}" @if ($account['id'] == $account_id) selected @endif>
+                            {{ $account['name'] }}</option>
                     @endforeach
                 </x-select-input>
             </div>

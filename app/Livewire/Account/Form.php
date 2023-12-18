@@ -42,7 +42,7 @@ class Form extends Component
                     $url = "/account";
                 }
                 $api_config->storeData($url, $validated);
-                return $this->redirectRoute('app.account.index', navigate: true);
+                return $this->redirectRoute('app.dashboard', navigate: true);
             } catch (Throwable $th) {
                 dd($th->getMessage());
             }

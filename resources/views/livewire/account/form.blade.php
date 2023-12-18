@@ -1,11 +1,11 @@
 <div>
     <div class="flex justify-between items-center">
-        <x-heading-1 value="Create Account" />
+        <x-heading-1 value="{{ $id ? 'Edit' : 'Create' }} Account" />
         <div class="flex items-center">
             <div wire:loading>
                 <x-small-spinners />
             </div>
-            <x-text-link href="{{ route('app.account.index') }}" value="Back" class="text-sm ml-2" />
+            <x-text-link href="{{ route('app.dashboard') }}" value="Back" class="text-sm ml-2" />
         </div>
     </div>
 
