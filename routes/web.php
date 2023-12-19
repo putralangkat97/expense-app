@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['api-web'])
@@ -16,6 +17,7 @@ Route::middleware(['api-web'])
 
 Route::middleware(['api-guard'])->get('/logout', function () {
     session()->flush();
+    Cache::flush();
     return redirect()->route('login');
 })->name('logout');
 

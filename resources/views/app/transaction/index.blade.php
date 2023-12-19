@@ -3,7 +3,7 @@
         <x-heading-1 value="All Transactions" />
         <x-text-link href="{{ route('app.dashboard') }}" value="Back" class="text-sm ml-2" />
     </div>
-    <livewire:transaction.index :transactions="$transactions" lazy />
+    <livewire:transaction.index :transactions="$transactions" :previousUrl="url()->previous()" lazy />
 
     {{-- create transaction --}}
     <div class="fixed bottom-0 w-full left-0 bg-gray-900 py-6 mx-auto">

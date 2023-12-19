@@ -9,6 +9,7 @@ use Throwable;
 class View extends Component
 {
     public $account;
+    public $previousUrl;
 
     public function delete($id)
     {

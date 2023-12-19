@@ -13,6 +13,7 @@ class Form extends Component
     public $description;
     public $amount;
     public $account;
+    public $previousUrl;
 
     public function mount()
     {

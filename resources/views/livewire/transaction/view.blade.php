@@ -5,7 +5,7 @@
             <div wire:loading>
                 <x-small-spinners />
             </div>
-            <x-text-link href="{{ route('app.dashboard') }}" value="Back" class="text-sm" />
+            <x-text-link href="{{ $previousUrl }}" value="Back" class="text-sm" />
         </div>
     </div>
     <x-transaction-detail :data="$transaction" />

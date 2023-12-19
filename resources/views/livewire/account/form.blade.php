@@ -5,7 +5,11 @@
             <div wire:loading>
                 <x-small-spinners />
             </div>
-            <x-text-link href="{{ route('app.dashboard') }}" value="Back" class="text-sm ml-2" />
+            @if ($previousUrl)
+                <x-text-link href="{{ $previousUrl }}" value="Back" class="text-sm ml-2" />
+            @else
+                <x-text-link href="{{ route('app.dashboard') }}" value="Back" class="text-sm ml-2" />
+            @endif
         </div>
     </div>
 

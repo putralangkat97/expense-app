@@ -7,7 +7,7 @@
             <x-heading-1 value="Recent Transaction" />
             <x-text-link href="{{ route('app.transaction.index') }}" value="View all" class="text-sm" />
         </div>
-        <livewire:transaction.index lazy :transactions="$transactions" />
+        <livewire:transaction.index lazy :transactions="$transactions" :previousUrl="url()->previous()" />
     </div>
 
     {{-- create transaction --}}

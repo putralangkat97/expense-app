@@ -18,6 +18,7 @@ class Form extends Component
     public $date;
     public $type;
     public $remarks;
+    public $previousUrl;
 
     #[Url]
     public $view = false;

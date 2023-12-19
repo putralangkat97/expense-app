@@ -3,14 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\APIHandler;
+use Illuminate\Support\Facades\Cache;
 
 class TransactionController extends Controller
 {
     public function index()
     {
+        $transactions = null;
         $token_config = new APIHandler();
+
+        if (Cache::has('transactions')) {
+            $transactions = Cache::get('transactions');
+        } else {
+            $transactions = $token_config->getData("/transaction");
+            Cache::put('transactions', $transactions, 900);
+        }
+
         return view('app/transaction/index', [
-            'transactions' => $token_config->getData("/transaction"),
+            'transactions' => $transactions,
+            'accountPage' => request()->query('accountPage') ?? null,
+            'accountId' => request()->query('accountId') ?? null,
         ]);
     }
 
@@ -19,6 +31,7 @@ class TransactionController extends Controller
         $token_config = new APIHandler();
         return view('app/transaction/view', [
             'transaction' => $token_config->getData("/transaction/{$id}"),
+            'previousUrl' => url()->previous(),
         ]);
     }
 
@@ -32,6 +45,7 @@ class TransactionController extends Controller
         return view('app/transaction/create', [
             'transaction' => $transaction ?? null,
             'accounts' => $accounts,
+            'previousUrl' => !$id ? url()->previous() : null,
         ]);
     }
 }
