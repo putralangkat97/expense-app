@@ -9,24 +9,10 @@ use Throwable;
 
 class View extends Component
 {
-    #[Url]
-    public $transactionPage, $accountPage;
-    // public $accountPage;
 
     public $transaction;
     public $route;
     public $previousUrl;
-
-    public function mount()
-    {
-        if ($this->transactionPage) {
-            $this->route = 'app.transaction.index';
-        } else if ($this->accountPage) {
-            $this->route = 'app.account.show';
-        } else {
-            $this->route = 'app.dashboard';
-        }
-    }
 
     public function delete($id)
     {

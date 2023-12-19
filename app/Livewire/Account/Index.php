@@ -2,9 +2,7 @@
 
 namespace App\Livewire\Account;
 
-use App\Helpers\APIHandler;
 use Livewire\Component;
-use Throwable;
 
 class Index extends Component
 {

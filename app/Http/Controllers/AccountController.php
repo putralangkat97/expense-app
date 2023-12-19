@@ -3,23 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\APIHandler;
-use Illuminate\Support\Facades\Cache;
 
 class AccountController extends Controller
 {
     public function index()
     {
         $token_config = new APIHandler();
-        $accounts = null;
-        if (Cache::has('accounts')) {
-            $accounts = Cache::get('accounts');
-        } else {
-            $accounts = $token_config->getData("/account");
-            Cache::put('accounts', $accounts, 900);
-        }
-
         return view('app/account/index', [
-            'accounts' => $accounts,
+            'accounts' => $token_config->getData("/account"),
         ]);
     }
 
